@@ -2,7 +2,6 @@ require 'curb'
 require 'json'
 module RHapi
   module Connection
-    
     # Instance methods ---------------------------------------------------------------------------  
       
     def put(url, payload)
@@ -42,6 +41,7 @@ module RHapi
     # Class methods -----------------------------------------------------------------------------
     
     module ClassMethods
+      attr_accessor :version
     
       def url_for(route={}, options={})
         if RHapi.options[:api_key].nil? and RHapi.options[:access_token].nil?
@@ -50,11 +50,10 @@ module RHapi
         url = "#{RHapi.options[:end_point]}"
         # unpack route -- define order to support ruby < 1.9
         url << "/#{route[:api]}" unless route[:api].nil?
-        if route[:version].nil?
-          url << "/#{RHapi.options[:version]}" 
-        else
-          url << "/#{route[:version]}"
-        end
+        
+        # Can override version in route or in the subclass, otherwise use default
+        url << "/#{route[:version] || version ||  RHapi.options[:version]}"
+        
         url << "/#{route[:resource]}" unless route[:resource].nil?
         url << "/#{route[:filter]}" unless route[:filter].nil?
         url << "/#{route[:identifier]}" unless route[:identifier].nil?

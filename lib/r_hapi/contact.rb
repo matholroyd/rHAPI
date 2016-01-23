@@ -165,43 +165,6 @@ module RHapi
 
   end
 
-  class ContactProperty
-    include Connection
-    extend Connection::ClassMethods
-    
-    attr_accessor :attributes, :changed_attributes
-    
-    def initialize(data=nil)
-      unless data.nil?
-        data.each do |property, hash|
-          data[property] = hash["value"]
-        end
-      
-        self.attributes = data
-      else
-        self.attributes = {}
-      end
-      self.changed_attributes = {}
-    end
-
-    # Instance methods -------------------------------------------------------
-    # Work with data in the data hash
-    def method_missing(method, *args, &block)
-      attribute = method.to_s
-
-      if attribute =~ /=$/ # Define property -- does not have to exist
-        attribute = attribute.chop
-        self.changed_attributes[attribute] = args[0]
-        self.attributes[attribute] = args[0]
-      else
-        return super unless self.attributes.include?(attribute)
-        self.attributes[attribute]
-      end 
-            
-    end
-
-  end
-
   class Contact
     include Connection
     extend Connection::ClassMethods
@@ -212,10 +175,10 @@ module RHapi
     def initialize(data=nil)
       unless data.nil?
         @read_only_members = data.slice!('properties') # Construct read-only attributes (e.g.: portal id)
-        data['properties'] = ContactProperty.new(data['properties'])
+        data['properties'] = Property.new(data['properties'])
         self.attributes = data # Read-writable properties (e.g.: first & last name)
       else
-        self.attributes = { 'properties' => ContactProperty.new }
+        self.attributes = { 'properties' => Property.new }
         @read_only_members = {}
       end
       self.changed_attributes = {}
@@ -353,7 +316,7 @@ module RHapi
     end
     def update(params={})
       unless params.empty?
-        update_attributes(params) # changes values and sets changed_attributes for ContactProperty object
+        update_attributes(params) # changes values and sets changed_attributes for Property object
         # at self.properties[.{changed_}attributes], then runs save
       else 
         save

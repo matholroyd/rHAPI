@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/contacts/v1/contact?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"property":"email","value":"bob@smith.com"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '1296'
+      Date:
+      - Mon, 25 Jan 2016 18:41:10 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"vid":606324,"canonical-vid":606324,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mNhFqUL3wOdXPds-h0XdmXi9bRi96IRUKEONvJBM-0v6aHKRb2aem7CbszWgG0n_rlpDOT72Ek4CQkPk11vyrC6yEiS0mOdIoQAyzq9qWEmIZjl3ML6oVjKEVVJnVIDuh3h9nWd","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mNhFqUL3wOdXPds-h0XdmXi9bRi96IRUKEONvJBM-0v6aHKRb2aem7CbszWgG0n_rlpDOT72Ek4CQkPk11vyrC6yEiS0mOdIoQAyzq9qWEmIZjl3ML6oVjKEVVJnVIDuh3h9nWd/","properties":{"createdate":{"value":"1453747269891","versions":[{"value":"1453747269891","source-type":"API","source-id":null,"source-label":null,"timestamp":1453747269891,"selected":false}]},"email":{"value":"bob@smith.com","versions":[{"value":"bob@smith.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1453747269865,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":606324,"is-deleted":false,"is-contact":false,"pointer-vid":0,"previous-vid":0,"linked-vids":[],"saved-at-timestamp":0,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"bob@smith.com","timestamp":1453747269891,"source":"UNSPECIFIED"},{"type":"LEAD_GUID","value":"c65bc717-31c3-4325-8b33-5b52cfc9a8b2","timestamp":1453747269894,"source":"UNSPECIFIED"}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Mon, 25 Jan 2016 18:41:10 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/contacts/v1/contact/email/bob@smith.com/profile?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Accept-Encoding
+      - Accept-Encoding
+      Content-Length:
+      - '2069'
+      Date:
+      - Mon, 25 Jan 2016 18:41:10 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"vid":606324,"canonical-vid":606324,"merged-vids":[],"portal-id":62515,"is-contact":true,"profile-token":"AO_T-mO5kYV-cbHE0FkfGSQSuRBI2mroccPieEVtIGj5vLsXVYf6noAxJvKmzHKFSIUTnca-E5kXfI_RYP2-_rkoRdaNctNpbduj-qn9W-5vOtHYSk7z3Liqy9X_wTI7PV2wKzSe7l_m","profile-url":"https://app.hubspot.com/contacts/62515/lists/public/contact/_AO_T-mO5kYV-cbHE0FkfGSQSuRBI2mroccPieEVtIGj5vLsXVYf6noAxJvKmzHKFSIUTnca-E5kXfI_RYP2-_rkoRdaNctNpbduj-qn9W-5vOtHYSk7z3Liqy9X_wTI7PV2wKzSe7l_m/","properties":{"lastmodifieddate":{"value":"1453747270211","versions":[{"value":"1453747270211","source-type":"CALCULATED","source-id":null,"source-label":null,"timestamp":1453747270211,"selected":false}]},"num_conversion_events":{"value":"0","versions":[{"value":"0","source-type":"CALCULATED","source-id":null,"source-label":null,"timestamp":0,"selected":false}]},"num_unique_conversion_events":{"value":"0","versions":[{"value":"0","source-type":"CALCULATED","source-id":null,"source-label":null,"timestamp":0,"selected":false}]},"createdate":{"value":"1453747269891","versions":[{"value":"1453747269891","source-type":"API","source-id":null,"source-label":null,"timestamp":1453747269891,"selected":false}]},"hs_lifecyclestage_subscriber_date":{"value":"1453747269891","versions":[{"value":"1453747269891","source-type":"API","source-id":null,"source-label":null,"timestamp":1453747269891,"selected":false}]},"lifecyclestage":{"value":"subscriber","versions":[{"value":"subscriber","source-type":"API","source-id":null,"source-label":null,"timestamp":1453747269891,"selected":false}]},"email":{"value":"bob@smith.com","versions":[{"value":"bob@smith.com","source-type":"API","source-id":null,"source-label":null,"timestamp":1453747269865,"selected":false}]}},"form-submissions":[],"list-memberships":[],"identity-profiles":[{"vid":606324,"saved-at-timestamp":1453747269897,"deleted-changed-timestamp":0,"identities":[{"type":"EMAIL","value":"bob@smith.com","timestamp":1453747269891},{"type":"LEAD_GUID","value":"c65bc717-31c3-4325-8b33-5b52cfc9a8b2","timestamp":1453747269894}]}],"merge-audits":[]}'
+    http_version: 
+  recorded_at: Mon, 25 Jan 2016 18:41:10 GMT
+recorded_with: VCR 2.9.3

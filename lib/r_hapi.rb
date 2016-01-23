@@ -4,7 +4,9 @@ require 'active_support/inflector/inflections'
 
 %w{
   connection
+  property
   contact
+  company
   lead
   configuration
   r_hapi_exception
