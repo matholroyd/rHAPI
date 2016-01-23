@@ -22,4 +22,13 @@ describe RHapi::Contact do
     end
   end
   
+  describe "update", :vcr do
+    it "should update the company details" do
+      c = RHapi::Company.create(name: "Company ABC")
+      c.update(name: "Example Inc")
+      
+      c2 = RHapi::Company.find_by_company_id(c.companyId)
+      expect(c2.properties.name).to eq("Example Inc")
+    end
+  end
 end

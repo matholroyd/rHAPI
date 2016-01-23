@@ -1,0 +1,96 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.hubapi.com/companies/v2/companies?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Company ABC"}]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '479'
+      Date:
+      - Mon, 25 Jan 2016 19:02:10 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"portalId":62515,"companyId":118004538,"isDeleted":false,"properties":{"name":{"value":"Company
+        ABC","timestamp":1453748530064,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Company
+        ABC","timestamp":1453748530064,"source":"API","sourceVid":[]}]},"createdate":{"value":"1453748530064","timestamp":1453748530064,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1453748530064","timestamp":1453748530064,"source":"API","sourceVid":[]}]}}}'
+    http_version: 
+  recorded_at: Mon, 25 Jan 2016 19:02:10 GMT
+- request:
+    method: put
+    uri: https://api.hubapi.com/companies/v2/companies/118004538?hapikey=demo
+    body:
+      encoding: UTF-8
+      string: '{"properties":[{"name":"name","value":"Example Inc"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      Expect:
+      - ''
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '722'
+      Date:
+      - Mon, 25 Jan 2016 19:02:10 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"portalId":62515,"companyId":118004538,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1453748530065","timestamp":1453748530065,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1453748530065","timestamp":1453748530065,"source":"CALCULATED","sourceVid":[]}]},"name":{"value":"Example
+        Inc","timestamp":1453748530318,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Example
+        Inc","timestamp":1453748530318,"source":"API","sourceVid":[]}]},"createdate":{"value":"1453748530064","timestamp":1453748530064,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1453748530064","timestamp":1453748530064,"source":"API","sourceVid":[]}]}}}'
+    http_version: 
+  recorded_at: Mon, 25 Jan 2016 19:02:10 GMT
+- request:
+    method: get
+    uri: https://api.hubapi.com/companies/v2/companies/118004538?hapikey=demo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '722'
+      Date:
+      - Mon, 25 Jan 2016 19:02:10 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"portalId":62515,"companyId":118004538,"isDeleted":false,"properties":{"hs_lastmodifieddate":{"value":"1453748530319","timestamp":1453748530319,"source":"CALCULATED","sourceId":null,"versions":[{"name":"hs_lastmodifieddate","value":"1453748530319","timestamp":1453748530319,"source":"CALCULATED","sourceVid":[]}]},"name":{"value":"Example
+        Inc","timestamp":1453748530318,"source":"API","sourceId":null,"versions":[{"name":"name","value":"Example
+        Inc","timestamp":1453748530318,"source":"API","sourceVid":[]}]},"createdate":{"value":"1453748530064","timestamp":1453748530064,"source":"API","sourceId":null,"versions":[{"name":"createdate","value":"1453748530064","timestamp":1453748530064,"source":"API","sourceVid":[]}]}}}'
+    http_version: 
+  recorded_at: Mon, 25 Jan 2016 19:02:10 GMT
+recorded_with: VCR 2.9.3

@@ -177,12 +177,10 @@ module RHapi
     end
 
     def update_existing(params)
-      response = post(Company.url_for(
+      response = put(Company.url_for(
         :api => 'companies',
-        :resource => 'company',
-        :filter => 'vid',
-        :identifier => self.vid,
-        :method => 'profile'
+        :resource => 'companies',
+        :filter => self.companyId
       ), params)
       true
     end
