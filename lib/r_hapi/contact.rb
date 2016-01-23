@@ -1,8 +1,3 @@
-require 'rubygems'
-require 'active_support'
-require 'active_support/inflector/inflections'
-require File.expand_path('../connection', __FILE__)
-
 module RHapi
   class PortalStatistic
     include Connection

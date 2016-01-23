@@ -1,7 +1,16 @@
-require File.expand_path('../r_hapi/contact', __FILE__)
-require File.expand_path('../r_hapi/lead', __FILE__)
-require File.expand_path('../r_hapi/configuration', __FILE__)
-require File.expand_path('../r_hapi/r_hapi_exception', __FILE__)
+require 'rubygems'
+require 'active_support'
+require 'active_support/inflector/inflections'
+
+%w{
+  connection
+  contact
+  lead
+  configuration
+  r_hapi_exception
+}.each do |file|
+  require File.expand_path("../r_hapi/#{file}", __FILE__)
+end
 
 require 'curb'
 require 'json'
