@@ -65,7 +65,7 @@ PLATFORMS
 DEPENDENCIES
   activesupport
   bundler (>= 1.0.0)
-  curb (= 0.8.8)
+  curb (>= 0.8.8)
   ir_b
   jeweler (>= 1.5.2)
   json (>= 1.5.1)
