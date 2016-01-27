@@ -17,7 +17,7 @@ module RHapi
 
     def post(url, payload)
       data = payload.to_json
-      response = Curl::Easy.http_post(url, data) do |curl| 
+      response = Curl::Easy.http_post(url, data) do |curl|
         curl.headers["Content-Type"] = "application/json"
         curl.on_failure do |response, err|
           RHapi::ConnectionError.raise_error("#{response.response_code}\n Error is: #{err.inspect}")
@@ -92,6 +92,21 @@ module RHapi
         RHapi::ConnectionError.raise_error(response.header_str) unless response.response_code.to_s =~ /2\d\d/
         response
       end
+      
+      def post(url, payload)
+        data = payload.to_json
+        response = Curl::Easy.http_post(url, data) do |curl|
+          curl.headers["Content-Type"] = "application/json"
+          curl.on_failure do |response, err|
+            RHapi::ConnectionError.raise_error("#{response.response_code}\n Error is: #{err.inspect}")
+          end
+          curl.on_complete do |response|
+            RHapi::ConnectionError.raise_error(response.header_str) unless response.response_code.to_s =~ /2\d\d/
+            response
+          end
+        end
+      end
+      
       
     end # End class methods
 

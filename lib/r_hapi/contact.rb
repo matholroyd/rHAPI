@@ -192,6 +192,41 @@ module RHapi
       # returns new contact object # TODO: ensure returns contact object
     end
     
+    def self.group_create(array)
+      def self.pv_pairs(hash)
+        hash.map do |k, v|
+          {
+            "property"  => k,
+            "value"     => v
+          }
+        end
+      end
+
+      params = array.map do |contact_params|
+        vid = contact_params.delete(:vid)
+        
+        if vid
+          {
+            vid: vid,
+            properties: pv_pairs(contact_params)
+          }
+        else
+          email = contact_params.delete(:email)
+          
+          {
+            email: email,
+            properties: pv_pairs(contact_params)
+          }
+        end
+      end
+      
+      post(Contact.url_for(
+        :api => 'contacts',
+        :resource => 'contact',
+        :method => 'batch'
+      ), params)
+    end
+    
     # TODO: implement reload
 
     # Finds contacts and returns an array of contacts. 
