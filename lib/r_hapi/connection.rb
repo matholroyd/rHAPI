@@ -6,13 +6,16 @@ module RHapi
       
     def put(url, payload)
       data = payload.to_json
-      response = Curl::Easy.http_put(url, data) do |curl| 
+      response = Curl::Easy.http_put(url, data) do |curl|
         curl.headers["Content-Type"] = "application/json"
         curl.on_failure do |response, err|
           RHapi::ConnectionError.raise_error("#{response.response_code}\n Error is: #{err.inspect}")
         end
+        curl.on_complete do |response|
+          RHapi::ConnectionError.raise_error(response.header_str) unless response.response_code.to_s =~ /2\d\d/
+          response
+        end
       end
-      RHapi::ConnectionError.raise_error(response.header_str) unless response.response_code.to_s =~ /2\d\d/
     end
 
     def post(url, payload)

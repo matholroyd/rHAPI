@@ -61,6 +61,17 @@ module RHapi
       company_data = JSON.parse(response.body_str)
       Company.new(company_data)
     end
+    
+    def self.all_company_contacts(company_id)
+      response = get(url_for(
+        :api => 'companies',
+        :resource => 'companies',
+        :filter => company_id,
+        :identifier => 'contacts'
+      ))
+
+      JSON.parse(response.body_str)
+    end
 
     # # Finds specified company by its email address.
     # def self.all_by_domain(domain)
@@ -184,6 +195,19 @@ module RHapi
       ), params)
       true
     end
+    
+    def connect_contact(contact_vid)
+      response = put(Company.url_for(
+        :api => 'companies',
+        :resource => 'companies',
+        :filter => self.company_id,
+        :identifier => 'contacts',
+        :member => contact_vid
+      ), {})
+
+      JSON.parse(response.body_str)
+    end
+    
 
     def delete
       response = http_delete(Company.url_for(
